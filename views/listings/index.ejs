@@ -1,0 +1,136 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+
+
+</style>
+
+ <div id="filters" >
+    <div class="filter">
+             <div> <i class="fa-solid fa-fire"></i></div>
+              <p>Trending</p>
+    </div>
+
+   <div class="filter">
+              <div> <i class="fa-solid fa-bed"></i></div>
+               <p>Rooms</p>
+   </div>
+
+      <div class="filter">
+               <div> <i class="fa-solid fa-mountain-city"></i></div>
+               <p>Iconic Cities</p>
+      </div>
+
+       <div class="filter">
+               <div> <i class="fa-solid fa-person-hiking"></i></div>
+               <p>Mountains</p>
+     </div>
+
+      <div class="filter">
+               <div> <i class="fa-brands fa-fort-awesome"></i></div>
+                <p>Castles</p>
+      </div>
+
+       <div class="filter">
+                <div> <i class="fa-solid fa-person-swimming"></i></div>
+                 <p>Amazing Pools</p>
+       </div>
+
+        <div class="filter">
+                 <div> <i class="fa-solid fa-tents"></i></div>
+                 <p>Camping</p>
+        </div>
+
+       <div class="filter">
+                 <div> <i class="fa-solid fa-tractor"></i></div>
+                 <p>Farms</p>
+        </div>
+
+       <div class="filter">
+                 <div> <i class="fa-solid fa-snowflake"></i></div>
+                 <p>Arctic</p>
+      </div>
+
+  <div class="filter">
+                   <div> <i class="fa-solid fa-sailboat"></i></div>
+                   <p>Boats</p>
+          </div>
+
+         <div class="filter">
+                   <div> <i class="fa-solid fa-mosque"></i></div>
+                   <p>Domes</p>
+        </div>
+
+  <div class="tax-toggle">
+
+      <div class="form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+        <label class="form-check-label" for="switchCheckDefault">Display Taxes</label>
+      </div>
+
+  </div>
+
+ </div>
+
+
+<body>
+
+
+
+<!--  <h1 class="mt-3">All Listings</h1> -->
+<!--  <form method="GET" action="/listings/new"> -->
+<!--      <button>Create New Listing</button> -->
+<!--  </form> -->
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 mt-3">
+
+<% for(let listing of allListings) { %>
+<a href="/listings/<%=listing._id %>" class="listing-link">
+<div class="card col listing-card">
+  <img src="<%=listing.image.url %>"
+  class="card-img-top" alt="Listing Image"
+  style="height: 20rem;">
+
+  <div class="card-img-overlay"></div>
+  <div class="card-body">
+    <h5 class="card-title"><%=listing.title%></h5>
+    <p class="card-text">&#36;<%=Number(listing.price).toLocaleString("en-IN")%>/night
+
+    <i class="tax">&nbsp; +18% Tax</i>
+
+    </p>
+
+
+  </div>
+</div>
+</a>
+
+<%}%>
+</div>
+
+<script>
+
+    let taxSwitch= document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click", ()=>
+    {
+       let taxDisplay= document.getElementsByClassName("tax");
+       for (info of taxDisplay){
+          if(info.style.display != "inline")
+          {
+             info.style.display="inline";
+
+          }
+      else{
+           info.style.display="none";
+      }
+       }
+
+    });
+
+
+
+</script>
+
+</body>
+
+
